@@ -1,0 +1,30 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+
+  .sidebar-toggle {
+    text-decoration: none;
+    color: nb-theme(sidebar-toggle-color);
+    nb-icon {
+      font-size: 1.75rem;
+    }
+  }
+
+  .logo {
+    padding: 0 1.25rem;
+    font-size: 1.75rem;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  nb-action {
+    height: auto;
+    display: flex;
+    align-content: center;
+  }
+
+  nb-user {
+    cursor: pointer;
+  }
+}
