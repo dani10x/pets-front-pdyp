@@ -6,10 +6,16 @@ import { ListaClientesComponent } from './lista-clientes/lista-clientes.componen
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormClientesComponent } from './form-clientes/form-clientes.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    ListaClientesComponent
+    ListaClientesComponent,
+    FormClientesComponent
   ],
   imports: [
     MatGridListModule,
@@ -20,7 +26,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ClientesRoutingModule,
     MatTableModule,
     NbButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
 })

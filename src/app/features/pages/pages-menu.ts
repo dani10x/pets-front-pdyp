@@ -23,6 +23,11 @@ export class Menu {
             icon: 'person-outline',
             link: 'clientes/lista'
           },
+          {
+            title: 'Agregar Clientes',
+            icon: 'plus-circle-outline',
+            link: 'clientes/form'
+          }
         ]
       },
     ]
