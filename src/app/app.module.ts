@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbMenuModule.forRoot(),
     NbToastrModule.forRoot(),
     NbSidebarModule.forRoot(),
-    NbIconModule
+    NbIconModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
