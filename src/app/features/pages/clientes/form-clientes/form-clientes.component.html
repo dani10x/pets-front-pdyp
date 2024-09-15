@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>Clientes</nb-card-header>
+  <nb-card-body>
+    <div class="container">
+      <form class="horizontal-form" [formGroup]="clienteForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-label>Cédula</mat-label>
+              <input
+                matInput
+                fullWidth
+                placeholder="Cédula"
+                formControlName="cedula"
+              />
+              <mat-error *ngIf="clienteForm.controls['cedula'].invalid && (clienteForm.controls['cedula'].dirty || clienteForm.controls['cedula'].touched)">
+                {{error(getFormControl('cedula'), 'Cédula')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </nb-card-body>
+</nb-card>

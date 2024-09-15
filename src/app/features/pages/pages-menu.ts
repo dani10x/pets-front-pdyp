@@ -21,8 +21,13 @@ export class Menu {
           {
             title: 'Consultar Clientes',
             icon: 'person-outline',
-            link: '/inicio/administrar-estados'
+            link: 'clientes/lista'
           },
+          {
+            title: 'Agregar Clientes',
+            icon: 'plus-circle-outline',
+            link: 'clientes/form'
+          }
         ]
       },
     ]
