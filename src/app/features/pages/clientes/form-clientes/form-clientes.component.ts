@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { noop } from 'rxjs';
-import { ClientePersistencia } from 'src/app/features/models/cliente.model';
+import { ClienteConsulta, ClientePersistencia, ClienteUpdate } from 'src/app/features/models/cliente.model';
 import { ClientesService } from 'src/app/features/services/clientes.service';
 import { ErrorService } from 'src/app/features/services/error.service';
 
@@ -15,14 +16,20 @@ export class FormClientesComponent implements OnInit {
 
   clienteForm!: FormGroup;
   loading: boolean = false;
+  receivedData!: ClienteConsulta;
 
   constructor(private fb: FormBuilder,
     private clientesService: ClientesService,
     private errorService: ErrorService,
-    private toastrService: NbToastrService) {}
+    private toastrService: NbToastrService,
+    private router: Router) {}
 
   ngOnInit(): void {
+    this.receivedData = history.state.cliente;
     this.initForm();
+    if(this.receivedData) {
+      this.setForm(this.receivedData)
+    }
   }
 
   private initForm(): void {
@@ -35,6 +42,10 @@ export class FormClientesComponent implements OnInit {
     });
   }
 
+  private setForm(cliente: ClienteConsulta): void {
+    this.clienteForm.setValue(cliente);
+  }
+
   public error(control: AbstractControl, nombre: string): string {
     return this.errorService.getErrorMessage(control, nombre);
   }
@@ -44,6 +55,10 @@ export class FormClientesComponent implements OnInit {
   }
 
   public registrar(): void {
+    this.receivedData ? this.actualizarCliente() : this.guardarCliente();
+  }
+
+  private guardarCliente(): void {
     this.loading = true;
     this.clientesService.registrarCliente(this.clienteForm.value as ClientePersistencia).subscribe({
       next: (res) => {
@@ -52,11 +67,29 @@ export class FormClientesComponent implements OnInit {
       },
       error: (e) => console.error(e),
       complete: () => this.loading = false,
-    }).add(() => this.loading = false);
+    });
   }
 
-  private getCliente(): ClientePersistencia {
-    return this.clienteForm.value as ClientePersistencia;
+  private actualizarCliente(): void {
+    this.loading = true;
+    this.clientesService.editarCliente(this.getCliente()).subscribe({
+      next: (res) => {
+        this.toastrService.show(res.respuesta, 'Actualizado', { status: 'success' })
+      },
+      error: (e) => console.error(e),
+      complete: () => this.loading = false,
+    }).add(() => this.navegarLista());
+  }
+
+  private getCliente(): ClienteUpdate {
+    return {
+      id: this.receivedData.id,
+      apellidos: this.clienteForm.get('apellidos')?.value,
+      cedula: this.clienteForm.get('cedula')?.value,
+      direccion: this.clienteForm.get('direccion')?.value,
+      nombres: this.clienteForm.get('nombres')?.value,
+      telefono: this.clienteForm.get('telefono')?.value,
+    }
   }
 
   private resetForm(): void {
@@ -66,7 +99,11 @@ export class FormClientesComponent implements OnInit {
       apellidos: '',
       direccion: '',
       telefono: ''
-    })
+    });
+  }
+
+  public navegarLista(): void {
+    this.router.navigate(['/inicio/clientes/lista'])
   }
 
 }

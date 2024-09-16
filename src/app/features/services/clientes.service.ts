@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ClienteConsulta, ClientePersistencia } from '../models/cliente.model';
+import { ClienteConsulta, ClientePersistencia, ClienteUpdate } from '../models/cliente.model';
 import { Mensaje } from '../models/mensaje.model';
 
 @Injectable({
@@ -21,5 +21,11 @@ export class ClientesService {
     return this.httpClient.post<Mensaje>(`${this.API}/registrar`, cliente);
   }
 
+  public eliminarCliente(id: number): Observable<Mensaje> {
+    return this.httpClient.delete<Mensaje>(`${this.API}/eliminar/${id}`);
+  }
 
+  public editarCliente(cliente: ClienteUpdate): Observable<Mensaje> {
+    return this.httpClient.put<Mensaje>(`${this.API}/actualizar`, cliente);
+  }
 }

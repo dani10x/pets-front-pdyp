@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card [nbSpinner]="loading">
   <nb-card-header>Lista clientes</nb-card-header>
   <nb-card-body>
     <div class="row">
@@ -22,8 +22,10 @@
           <ng-container matColumnDef="acciones">
             <th mat-header-cell *matHeaderCellDef> Acciones </th>
             <td mat-cell *matCellDef="let cliente">
-              <button nbButton ghost status="primary" size="giant"><nb-icon icon="edit-outline"></nb-icon></button>
-              <button nbButton ghost status="primary" size="giant"><nb-icon icon="trash-2-outline"></nb-icon></button>
+              <button nbButton ghost status="primary" size="giant" (click)="actualizarCliente(cliente)"><nb-icon
+                  icon="edit-outline"></nb-icon></button>
+              <button nbButton ghost status="primary" size="giant" (click)="eliminarCliente(cliente)"><nb-icon
+                  icon="trash-2-outline"></nb-icon></button>
             </td>
           </ng-container>
 
@@ -31,10 +33,9 @@
           <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
 
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-          </mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
       </div>
     </div>
   </nb-card-body>

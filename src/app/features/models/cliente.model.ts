@@ -14,3 +14,7 @@ export interface ClientePersistencia {
   direccion: string;
   telefono: string;
 }
+
+export interface ClienteUpdate extends ClientePersistencia {
+  id: number;
+}

@@ -59,7 +59,7 @@
   </nb-card-body>
   <nb-card-footer>
     <div class="buttones-container">
-      <button mat-button>Cancelar</button>
+      <button mat-button (click)="navegarLista()" *ngIf="receivedData">Cancelar</button>
       <button mat-raised-button color="primary" (click)="registrar()" [disabled]="clienteForm.invalid">Registrar</button>
     </div>
   </nb-card-footer>
