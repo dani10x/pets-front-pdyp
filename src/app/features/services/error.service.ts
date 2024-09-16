@@ -1,12 +1,14 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { NbToastrService } from '@nebular/theme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService {
 
-  constructor() { }
+  constructor(private toastrService: NbToastrService) { }
 
   public getErrorMessage(control: AbstractControl, nombre: string): string {
     if (control.errors) {
@@ -37,4 +39,26 @@ export class ErrorService {
     }
     return '';
   }
+
+  public handleError(error: HttpErrorResponse): void {
+    let mensaje = '';
+    let titulo = '';
+    let estado: 'danger' | 'warning' = 'danger';
+    if(error.status === 500) {
+      mensaje = 'Ha ocurrido un error procesando la solicitud';
+      titulo = 'Error';
+    }
+    else if(error.status === 504) {
+      mensaje = 'El servidor no se encuentra disponible';
+      titulo = 'Error';
+    }
+    else {
+      mensaje = error.error.respuesta;
+      titulo = 'Aviso';
+      estado = 'warning';
+    }
+    this.toastrService.show(mensaje, titulo, { status: estado });
+  }
+
+
 }

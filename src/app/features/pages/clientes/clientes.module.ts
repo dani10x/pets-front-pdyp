@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbSpinnerModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { ClientesRoutingModule } from './clientes-routing.module';
@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    NbSpinnerModule
   ],
   providers: [],
 })

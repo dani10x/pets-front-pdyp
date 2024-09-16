@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card [nbSpinner]="loading">
   <nb-card-header>Clientes</nb-card-header>
   <nb-card-body>
     <div class="container">
@@ -7,21 +7,60 @@
           <div class="col-sm-6">
             <mat-form-field>
               <mat-label>Cédula</mat-label>
-              <input
-                matInput
-                fullWidth
-                placeholder="Cédula"
-                formControlName="cedula"
-              />
-              <mat-error *ngIf="clienteForm.controls['cedula'].invalid && (clienteForm.controls['cedula'].dirty || clienteForm.controls['cedula'].touched)">
+              <input matInput type="text" placeholder="Cédula" formControlName="cedula" />
+              <mat-error
+                *ngIf="clienteForm.controls['cedula'].invalid && (clienteForm.controls['cedula'].dirty || clienteForm.controls['cedula'].touched)">
                 {{error(getFormControl('cedula'), 'Cédula')}}</mat-error>
             </mat-form-field>
           </div>
           <div class="col-sm-6">
-
+            <mat-form-field>
+              <mat-label>Nombres</mat-label>
+              <input matInput type="text" placeholder="Nombres" formControlName="nombres" />
+              <mat-error
+                *ngIf="clienteForm.controls['nombres'].invalid && (clienteForm.controls['nombres'].dirty || clienteForm.controls['nombres'].touched)">
+                {{error(getFormControl('nombres'), 'Nombres')}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-label>Apellidos</mat-label>
+              <input matInput placeholder="Apellidos" formControlName="apellidos" />
+              <mat-error
+                *ngIf="clienteForm.controls['apellidos'].invalid && (clienteForm.controls['apellidos'].dirty || clienteForm.controls['apellidos'].touched)">
+                {{error(getFormControl('apellidos'), 'Apellidos')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-label>Teléfono</mat-label>
+              <input matInput placeholder="Teléfono" formControlName="telefono" />
+              <mat-error
+                *ngIf="clienteForm.controls['telefono'].invalid && (clienteForm.controls['telefono'].dirty || clienteForm.controls['telefono'].touched)">
+                {{error(getFormControl('telefono'), 'Teléfono')}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <mat-form-field>
+              <mat-label>Dirección</mat-label>
+              <input matInput placeholder="Dirección" formControlName="direccion" />
+              <mat-error
+                *ngIf="clienteForm.controls['direccion'].invalid && (clienteForm.controls['direccion'].dirty || clienteForm.controls['direccion'].touched)">
+                {{error(getFormControl('direccion'), 'Dirección')}}</mat-error>
+            </mat-form-field>
           </div>
         </div>
       </form>
     </div>
   </nb-card-body>
+  <nb-card-footer>
+    <div class="buttones-container">
+      <button mat-button>Cancelar</button>
+      <button mat-raised-button color="primary" (click)="registrar()" [disabled]="clienteForm.invalid">Registrar</button>
+    </div>
+  </nb-card-footer>
 </nb-card>
