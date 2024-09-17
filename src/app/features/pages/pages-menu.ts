@@ -30,6 +30,17 @@ export class Menu {
           }
         ]
       },
+      {
+        title: 'MASCOTAS',
+        icon: 'github-outline',
+        children: [
+          {
+            title: 'Consultar Mascotas',
+            icon: 'list-outline',
+            link: 'mascotas/lista'
+          }
+        ]
+      }
     ]
   }
 }
