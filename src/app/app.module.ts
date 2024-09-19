@@ -9,7 +9,6 @@ import { NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorsInterceptor } from './features/interceptors/errors.interceptor';
-
 @NgModule({
   declarations: [
     AppComponent,
