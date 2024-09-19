@@ -45,7 +45,23 @@ export class Menu {
             link: 'mascotas/form'
           }
         ]
-      }
+       },
+       {
+         title: 'MEDICAMENTOS',
+         icon: 'activity-outline',
+         children: [
+           {
+             title: 'Consultar Medicamentos',
+             icon: 'list-outline',
+             link: 'medicamentos/lista'
+           },
+           {
+            title: 'Agregar Medicamentos',
+            icon: 'plus-circle-outline',
+            link: 'medicamentos/form'
+          }
+         ]
+       }
     ]
   }
 }

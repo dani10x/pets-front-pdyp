@@ -1,0 +1,47 @@
+<nb-card [nbSpinner]="loading">
+    <nb-card-header>Medicamentos</nb-card-header>
+    <nb-card-body>
+      <div class="container">
+        <form class="horizontal-form" [formGroup]="MedicamentoForm">
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" placeholder="Nombre" formControlName="nombre" />
+                <mat-error
+                  *ngIf="MedicamentoForm.controls['nombre'].invalid && (MedicamentoForm.controls['nombre'].dirty || MedicamentoForm.controls['nombre'].touched)">
+                  {{error(getFormControl('nombre'), 'Nombre')}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field>
+                  <mat-label>Dosis</mat-label>
+                  <input matInput placeholder="Dosis" formControlName="dosis" />
+                  <mat-error
+                    *ngIf="MedicamentoForm.controls['dosis'].invalid && (MedicamentoForm.controls['dosis'].dirty || MedicamentoForm.controls['dosis'].touched)">
+                    {{error(getFormControl('dosis'), 'Dosis')}}</mat-error>
+                </mat-form-field>
+              </div> 
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+                <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <input matInput type="text" placeholder="Descripción" formControlName="descripcion" />
+                <mat-error
+                    *ngIf="MedicamentoForm.controls['descripcion'].invalid && (MedicamentoForm.controls['descripcion'].dirty || MedicamentoForm.controls['descripcion'].touched)">
+                    {{error(getFormControl('descripcion'), 'Descripción')}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        </form>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="buttones-container">
+        <button mat-button (click)="navegarLista()" *ngIf="receivedData">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="registrar()" [disabled]="MedicamentoForm.invalid">Registrar</button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+  
