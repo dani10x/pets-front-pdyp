@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { MascotasRoutingModule } from './mascotas-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ListaMascotasComponent } from './lista-mascotas/lista-mascotas.component';
-import { NbButtonModule, NbCardModule, NbIconModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbIconModule, NbSpinnerModule } from '@nebular/theme';
+import { FormMascotasComponent } from './form-mascotas/form-mascotas.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
-    ListaMascotasComponent
+    ListaMascotasComponent,
+    FormMascotasComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +29,18 @@ import { NbButtonModule, NbCardModule, NbIconModule } from '@nebular/theme';
     MatPaginatorModule,
     NbCardModule,
     NbIconModule,
-    NbButtonModule
-  ]
+    NbButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    NbSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatSelectModule
+  ],
+  providers: [DatePipe]
 })
 export class MascotasModule { }

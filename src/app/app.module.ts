@@ -9,10 +9,12 @@ import { NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorsInterceptor } from './features/interceptors/errors.interceptor';
+import { DatePipe } from './features/pipes/date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DatePipe,
   ],
   imports: [
     BrowserModule,

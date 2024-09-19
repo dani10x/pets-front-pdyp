@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ClienteConsulta, ClientePersistencia, ClienteUpdate } from '../models/cliente.model';
+import { ClienteAutoComplete, ClienteConsulta, ClientePersistencia, ClienteUpdate } from '../models/cliente.model';
 import { Mensaje } from '../models/mensaje.model';
 
 @Injectable({
@@ -27,5 +27,9 @@ export class ClientesService {
 
   public editarCliente(cliente: ClienteUpdate): Observable<Mensaje> {
     return this.httpClient.put<Mensaje>(`${this.API}/actualizar`, cliente);
+  }
+
+  public consultarAutocompletable(): Observable<ClienteAutoComplete[]> {
+    return this.httpClient.get<ClienteAutoComplete[]>(`${this.API}/autocompletable`);
   }
 }

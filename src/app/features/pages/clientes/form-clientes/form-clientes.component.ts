@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import { noop } from 'rxjs';
 import { ClienteConsulta, ClientePersistencia, ClienteUpdate } from 'src/app/features/models/cliente.model';
 import { ClientesService } from 'src/app/features/services/clientes.service';
 import { ErrorService } from 'src/app/features/services/error.service';

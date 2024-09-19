@@ -38,6 +38,11 @@ export class Menu {
             title: 'Consultar Mascotas',
             icon: 'list-outline',
             link: 'mascotas/lista'
+          },
+          {
+            title: 'Crear mascota',
+            icon: 'plus-circle-outline',
+            link: 'mascotas/form'
           }
         ]
       }

@@ -18,3 +18,8 @@ export interface ClientePersistencia {
 export interface ClienteUpdate extends ClientePersistencia {
   id: number;
 }
+
+export interface ClienteAutoComplete {
+  id: number;
+  nombre: string;
+}
