@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import { noop } from 'rxjs';
 import { MedicamentoConsulta, MedicamentoPersistencia, MedicamentoUpdate } from 'src/app/features/models/medicamento.model';
 import { MedicamentosService } from 'src/app/features/services/medicamentos.service';
 import { ErrorService } from 'src/app/features/services/error.service';
@@ -25,7 +24,7 @@ export class FormMedicamentosComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
-    this.receivedData = history.state.cliente;
+    this.receivedData = history.state.medicamento;
     this.initForm();
     if(this.receivedData) {
       this.setForm(this.receivedData)
