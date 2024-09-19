@@ -26,8 +26,8 @@
         <div class="row">
           <div class="col-sm-6">
             <mat-form-field>
-              <mat-label>Peso</mat-label>
-              <input matInput placeholder="Peso" formControlName="peso" type="number"/>
+              <mat-label>Peso Kg</mat-label>
+              <input matInput placeholder="Peso en Kg" formControlName="peso" type="number"/>
               <mat-error
                 *ngIf="mascotasForm.controls['peso'].invalid && (mascotasForm.controls['peso'].dirty || mascotasForm.controls['peso'].touched)">
                 {{error(getFormControl('peso'), 'Peso')}}</mat-error>
