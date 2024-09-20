@@ -1,0 +1,24 @@
+<mat-divider></mat-divider>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-info">
+      <label class="field-nombre">Mascota</label>
+      <div class="label">{{mascota.nombre + ' ' + mascota.raza}}</div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="field-info">
+      <label class="field-nombre">Edad</label>
+      <div class="label">{{mascota.fechaNacimiento | edad }}</div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="field-info">
+      <label class="field-nombre">Peso</label>
+      <div class="label">{{mascota.peso + 'Kg'}}</div>
+    </div>
+  </div>
+</div>
+<h4 *ngIf="mascota.tratamientos.length != 0">Medicamentos</h4>
+<app-reporte-medicamnto *ngFor="let tratamiento of mascota.tratamientos" [tratamiento]="tratamiento"></app-reporte-medicamnto>
+<mat-divider></mat-divider>

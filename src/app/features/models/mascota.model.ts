@@ -1,3 +1,5 @@
+import { ReporteTratamientosDTO } from "./tratameinto.model";
+
 export interface MascotaConsulta {
     id: number;
     nombre: string;
@@ -27,4 +29,12 @@ export interface MascotaConsultaDTO {
   fechaNacimiento: Date;
   idCliente: number;
   cliente: string;
+}
+
+export interface ReporteMascotasDTO {
+  nombre: string;
+  raza: string;
+  peso: number;
+  fechaNacimiento: Date;
+  tratamientos: ReporteTratamientosDTO[];
 }

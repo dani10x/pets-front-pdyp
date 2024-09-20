@@ -12,11 +12,20 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
+import { InformeDialogComponent } from '../../components/informe-dialog/informe-dialog.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { ReporteMascotaComponent } from '../../components/reporte-mascota/reporte-mascota.component';
+import { MascotasModule } from '../mascotas/mascotas.module';
+import { ReporteMedicamntoComponent } from '../../components/reporte-medicamnto/reporte-medicamnto.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     ListaClientesComponent,
-    FormClientesComponent
+    FormClientesComponent,
+    InformeDialogComponent,
+    ReporteMascotaComponent,
+    ReporteMedicamntoComponent
   ],
   imports: [
     MatGridListModule,
@@ -34,7 +43,10 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     CommonModule,
     MatButtonModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    MatDialogModule,
+    MascotasModule,
+    MatDividerModule
   ],
   providers: [],
 })

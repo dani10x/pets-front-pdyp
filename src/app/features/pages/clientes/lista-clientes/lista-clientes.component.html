@@ -22,6 +22,8 @@
           <ng-container matColumnDef="acciones">
             <th mat-header-cell *matHeaderCellDef> Acciones </th>
             <td mat-cell *matCellDef="let cliente">
+              <button nbButton ghost status="primary" size="giant" (click)="openDialog(cliente)"><nb-icon
+                icon="eye-outline"></nb-icon></button>
               <button nbButton ghost status="primary" size="giant" (click)="actualizarCliente(cliente)"><nb-icon
                   icon="edit-outline"></nb-icon></button>
               <button nbButton ghost status="primary" size="giant" (click)="eliminarCliente(cliente)"><nb-icon

@@ -1,3 +1,5 @@
+import { ReporteMascotasDTO } from "./mascota.model";
+
 export interface ClienteConsulta {
   id: number;
   cedula: string;
@@ -22,4 +24,13 @@ export interface ClienteUpdate extends ClientePersistencia {
 export interface ClienteAutoComplete {
   id: number;
   nombre: string;
+}
+
+export interface ReporteClienteDTO {
+  cedula: string;
+  nombres: string;
+  apellidos: string;
+  direccion: string;
+  telefono: string;
+  mascotas: ReporteMascotasDTO[];
 }

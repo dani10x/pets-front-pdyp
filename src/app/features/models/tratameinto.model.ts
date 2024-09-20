@@ -16,3 +16,10 @@ export interface TratamientoMascota {
   fechaInicio: Date;
   nombreMedicamento: string;
 }
+
+export interface ReporteTratamientosDTO {
+  fechaInicio: Date;
+  descripcion: string;
+  dosis: string;
+  nombre: string;
+}

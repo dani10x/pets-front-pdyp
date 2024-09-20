@@ -1,0 +1,36 @@
+<mat-dialog-content>
+  <div class="container">
+    <h3>Cliente</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="field-info">
+          <label class="field-nombre">Cedula</label>
+          <div class="label">{{cliente.cedula}}</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="field-info">
+          <label class="field-nombre">Nombre Completo</label>
+          <div class="label">{{cliente.nombres + ' '+ cliente.apellidos}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="field-info">
+          <label class="field-nombre">Dirección</label>
+          <div class="label">{{cliente.direccion}}</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="field-info">
+          <label class="field-nombre">Teléfono</label>
+          <div class="label">{{cliente.telefono}}</div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 *ngIf="cliente.mascotas.length != 0">Tratamientos</h3>
+    <app-reporte-mascota *ngFor="let mascota of cliente.mascotas" [mascota]="mascota"></app-reporte-mascota>
+  </div>
+</mat-dialog-content>

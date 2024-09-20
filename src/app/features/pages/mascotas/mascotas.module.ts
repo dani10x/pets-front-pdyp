@@ -49,6 +49,7 @@ import { ListaTratamientosComponent } from '../../components/lista-tratamientos/
     MatSelectModule,
     MatDividerModule
   ],
-  providers: [DatePipe, EdadPipe]
+  providers: [DatePipe, EdadPipe],
+  exports: [EdadPipe]
 })
 export class MascotasModule { }

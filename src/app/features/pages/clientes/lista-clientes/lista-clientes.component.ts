@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ClientesService } from 'src/app/features/services/clientes.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClienteConsulta } from 'src/app/features/models/cliente.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { NbToastrService } from '@nebular/theme';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { InformeDialogComponent } from 'src/app/features/components/informe-dialog/informe-dialog.component';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -17,6 +19,7 @@ export class ListaClientesComponent implements OnInit, AfterViewInit {
   dataSource!: MatTableDataSource<ClienteConsulta>;
   displayedColumns: string[] = ['cedula', 'nombres', 'apellidos', 'acciones'];
   totalRegistros!: number;
+  readonly dialog = inject(MatDialog);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private clientesService: ClientesService, private toastrService: NbToastrService, private router: Router) {}
@@ -50,5 +53,13 @@ export class ListaClientesComponent implements OnInit, AfterViewInit {
 
   public actualizarCliente(cliente: ClienteConsulta): void {
     this.router.navigate(['/inicio/clientes/form'], { state: { cliente } });
+  }
+
+  public openDialog(cliente: ClienteConsulta): void {
+    this.dialog.open(InformeDialogComponent, {
+      data: { id: cliente.id },
+      height: '400px',
+      width: '600px',
+    });
   }
 }
