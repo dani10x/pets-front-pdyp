@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import { MascotaConsulta } from 'src/app/features/models/mascota.model';
+import { MascotaConsulta, MascotaConsultaDTO } from 'src/app/features/models/mascota.model';
 import { MascotasService } from 'src/app/features/services/mascotas.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { MascotasService } from 'src/app/features/services/mascotas.service';
 export class ListaMascotasComponent implements OnInit, AfterViewInit{
 
   loading: boolean = false;
-  dataSource!: MatTableDataSource<MascotaConsulta>;
+  dataSource!: MatTableDataSource<MascotaConsultaDTO>;
   displayedColumns: string[] = ['nombre', 'raza', 'cliente', 'acciones'];
   totalRegistros!: number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -22,7 +22,7 @@ export class ListaMascotasComponent implements OnInit, AfterViewInit{
   constructor(private mascotasService: MascotasService, private toastrService: NbToastrService, private router: Router) {}
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<MascotaConsulta>();
+    this.dataSource = new MatTableDataSource<MascotaConsultaDTO>();
     this.consultarMascotas();
   }
 
@@ -31,8 +31,8 @@ export class ListaMascotasComponent implements OnInit, AfterViewInit{
   }
 
   private consultarMascotas(): void {
-    this.mascotasService.listarMascotas().subscribe({
-      next: (res) => this.dataSource.data = res as MascotaConsulta[],
+    this.mascotasService.listarMascotasPropietario().subscribe({
+      next: (res) => this.dataSource.data = res as MascotaConsultaDTO[],
       error: (e) => console.error(e),
     });
   }
@@ -49,5 +49,9 @@ export class ListaMascotasComponent implements OnInit, AfterViewInit{
 
   public actualizarMascota(mascota: MascotaConsulta): void {
     this.router.navigate(['/inicio/mascotas/form'], { state: { mascota } });
+  }
+
+  public agregarTratamiento(mascota: MascotaConsulta): void {
+    this.router.navigate(['/inicio/mascotas/tratamientos'], { state: { mascota } });
   }
 }

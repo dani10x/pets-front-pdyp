@@ -18,3 +18,13 @@ export interface MascotaPersistencia {
 export interface MascotaUpdate extends MascotaPersistencia {
   id: number;
 }
+
+export interface MascotaConsultaDTO {
+  id: number;
+  nombre: string;
+  raza: string;
+  peso: number;
+  fechaNacimiento: Date;
+  idCliente: number;
+  cliente: string;
+}

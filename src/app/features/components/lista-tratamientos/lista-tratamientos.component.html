@@ -1,0 +1,31 @@
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="dosis">
+    <th mat-header-cell *matHeaderCellDef> Dosis </th>
+    <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.dosis }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="medicamento">
+    <th mat-header-cell *matHeaderCellDef> Medicamento </th>
+    <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.nombreMedicamento }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
+    <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.fechaInicio }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let tratamiento">
+      <button nbButton ghost status="primary" size="giant" (click)="eliminarTratamiento(tratamiento)"><nb-icon
+          icon="trash-2-outline"></nb-icon></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator>

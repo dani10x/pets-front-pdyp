@@ -16,7 +16,7 @@
 
           <ng-container matColumnDef="cliente">
             <th mat-header-cell *matHeaderCellDef> Propietario </th>
-            <td mat-cell *matCellDef="let mascota"> {{ mascota.idCliente }} </td>
+            <td mat-cell *matCellDef="let mascota"> {{ mascota.cliente }} </td>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
@@ -24,6 +24,8 @@
             <td mat-cell *matCellDef="let mascota">
               <button nbButton ghost status="primary" size="giant" (click)="actualizarMascota(mascota)"><nb-icon
                   icon="edit-outline"></nb-icon></button>
+              <button nbButton ghost status="primary" size="giant" (click)="agregarTratamiento(mascota)"><nb-icon
+                  icon="thermometer-plus-outline"></nb-icon></button>
               <button nbButton ghost status="primary" size="giant" (click)="eliminarMascotas(mascota)"><nb-icon
                   icon="trash-2-outline"></nb-icon></button>
             </td>

@@ -15,11 +15,18 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import { AddTratamientoComponent } from './add-tratamiento/add-tratamiento.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { EdadPipe } from '../../pipes/edad.pipe';
+import { ListaTratamientosComponent } from '../../components/lista-tratamientos/lista-tratamientos.component';
 
 @NgModule({
   declarations: [
     ListaMascotasComponent,
-    FormMascotasComponent
+    FormMascotasComponent,
+    AddTratamientoComponent,
+    ListaTratamientosComponent,
+    EdadPipe
   ],
   imports: [
     CommonModule,
@@ -39,8 +46,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule
   ],
-  providers: [DatePipe]
+  providers: [DatePipe, EdadPipe]
 })
 export class MascotasModule { }

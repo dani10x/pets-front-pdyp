@@ -112,7 +112,7 @@ export class FormMascotasComponent implements OnInit {
     });
   }
 
-  formatDate(date: Date): string {
+  private formatDate(date: Date): string {
     let transform = this.datePipe.transform(date, "yyyy-MM-dd'T'HH:mm:ss", 'UTC');
     if(transform) {
       return transform;

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,12 +8,10 @@ import { NbIconModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeMod
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorsInterceptor } from './features/interceptors/errors.interceptor';
-import { DatePipe } from './features/pipes/date.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DatePipe,
+    AppComponent
   ],
   imports: [
     BrowserModule,

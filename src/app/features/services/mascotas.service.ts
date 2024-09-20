@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MascotaConsulta, MascotaPersistencia, MascotaUpdate } from '../models/mascota.model';
+import { MascotaConsulta, MascotaConsultaDTO, MascotaPersistencia, MascotaUpdate } from '../models/mascota.model';
 import { Mensaje } from '../models/mensaje.model';
 
 @Injectable({
@@ -27,5 +27,9 @@ export class MascotasService {
 
   public actualizarMascota(mascota: MascotaUpdate): Observable<Mensaje> {
     return this.httpClient.put<Mensaje>(`${this.API}/actualizar`, mascota);
+  }
+
+  public listarMascotasPropietario(): Observable<MascotaConsultaDTO[]> {
+    return this.httpClient.get<MascotaConsultaDTO[]>(`${this.API}/listar-mascotas`);
   }
 }

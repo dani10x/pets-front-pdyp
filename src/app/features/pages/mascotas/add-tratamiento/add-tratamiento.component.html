@@ -1,0 +1,62 @@
+<nb-card [nbSpinner]="loading">
+  <nb-card-header>Tratamientos</nb-card-header>
+  <nb-card-body>
+    <div class="contaier">
+      <div class="row">
+        <div class="col">
+          <div class="mascota-info">
+            <label class="mascota-nombre">Mascota</label>
+            <div class="label">{{receivedData.nombre + " - " + receivedData.raza}}</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mascota-info">
+            <label class="mascota-nombre">Edad</label>
+            <div class="label">{{receivedData.fechaNacimiento | edad }}</div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <form class="horizontal-form" [formGroup]="tratamientosForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-label>Fecha de Inicio</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="Fecha de Inicio" formControlName="fechaInicio" [max]="maxDate" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="tratamientosForm.controls['fechaInicio'].invalid && (tratamientosForm.controls['fechaInicio'].dirty || tratamientosForm.controls['fechaInicio'].touched)">
+                {{error(getFormControl('fechaInicio'), 'Fecha de Incio')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-label>Medicamento</mat-label>
+              <mat-select formControlName="medicamentosId">
+                <mat-option *ngFor="let medicamento of medicamentos"
+                  [value]="medicamento.id">{{medicamento.nombre}}</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="tratamientosForm.controls['medicamentosId'].invalid && (tratamientosForm.controls['medicamentosId'].dirty || tratamientosForm.controls['medicamentosId'].touched)">
+                {{error(getFormControl('medicamentosId'), 'Medicamento')}}</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <div class="buttones-container">
+        <button mat-button (click)="navegarLista()" *ngIf="receivedData">Cancelar</button>
+        <button mat-raised-button color="primary" [disabled]="tratamientosForm.invalid" (click)="registrarTratamiento()">Registrar</button>
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="container">
+      <app-lista-tratamientos [idMascota]="receivedData.id"></app-lista-tratamientos>
+    </div>
+  </nb-card-body>
+</nb-card>
