@@ -42,7 +42,13 @@ export class FormClientesComponent implements OnInit {
   }
 
   private setForm(cliente: ClienteConsulta): void {
-    this.clienteForm.setValue(cliente);
+    this.clienteForm.setValue({
+      cedula: cliente.cedula,
+      nombres: cliente.nombres,
+      apellidos: cliente.apellidos,
+      direccion: cliente.direccion,
+      telefono: cliente.telefono
+    });
   }
 
   public error(control: AbstractControl, nombre: string): string {
@@ -59,7 +65,7 @@ export class FormClientesComponent implements OnInit {
 
   private guardarCliente(): void {
     this.loading = true;
-    this.clientesService.registrarCliente(this.clienteForm.value as ClientePersistencia).subscribe({
+    this.clientesService.graphRegistrarCliente(this.clienteForm.value as ClientePersistencia).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Registrado', { status: 'success' })
         this.resetForm();
@@ -71,7 +77,7 @@ export class FormClientesComponent implements OnInit {
 
   private actualizarCliente(): void {
     this.loading = true;
-    this.clientesService.editarCliente(this.getCliente()).subscribe({
+    this.clientesService.graphEditarCliente(this.receivedData.id, this.getClientePersistencia()).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Actualizado', { status: 'success' })
       },
@@ -83,6 +89,16 @@ export class FormClientesComponent implements OnInit {
   private getCliente(): ClienteUpdate {
     return {
       id: this.receivedData.id,
+      apellidos: this.clienteForm.get('apellidos')?.value,
+      cedula: this.clienteForm.get('cedula')?.value,
+      direccion: this.clienteForm.get('direccion')?.value,
+      nombres: this.clienteForm.get('nombres')?.value,
+      telefono: this.clienteForm.get('telefono')?.value,
+    }
+  }
+
+  private getClientePersistencia(): ClientePersistencia {
+    return {
       apellidos: this.clienteForm.get('apellidos')?.value,
       cedula: this.clienteForm.get('cedula')?.value,
       direccion: this.clienteForm.get('direccion')?.value,

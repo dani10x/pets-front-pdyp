@@ -34,15 +34,17 @@ export class ListaClientesComponent implements OnInit, AfterViewInit {
   }
 
   private consultarClientes(): void {
-    this.clientesService.listarClientes().subscribe({
-      next: (res) => this.dataSource.data = res as ClienteConsulta[],
+    this.clientesService.graphListarClientes().subscribe({
+      next: (res) => {
+        this.dataSource.data = res as ClienteConsulta[];
+      },
       error: (e) => console.error(e),
     });
   }
 
   public eliminarCliente(cliente: ClienteConsulta): void {
     this.loading = true;
-    this.clientesService.eliminarCliente(cliente.id).subscribe({
+    this.clientesService.graphEliminarCliente(cliente.id).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Eliminado', { status: 'success' });
       },
