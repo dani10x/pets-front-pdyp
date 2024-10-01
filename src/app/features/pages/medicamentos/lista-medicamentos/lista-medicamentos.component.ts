@@ -30,14 +30,16 @@ export class ListaMedicamentosComponent implements OnInit, AfterViewInit{
   }
 
   private consultarMedicamentos(): void {
-    this.medicamentoService.listarMedicamento().subscribe({
-      next: (res) => this.dataSource.data = res as MedicamentoConsulta[],
+    this.medicamentoService.graphListarMedicamentos().subscribe({
+      next: (res) => {
+        this.dataSource.data = res as MedicamentoConsulta[];
+      },
       error: (e) => console.error(e),
     });
   }
 
   public eliminarMedicamentos(medicamento: MedicamentoConsulta): void {
-    this.medicamentoService.elimianrMaedicamento(medicamento.id).subscribe({
+    this.medicamentoService.graphEliminarMedicamento(medicamento.id).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Eliminado', { status: 'success' });
       },
