@@ -40,7 +40,11 @@ export class FormMedicamentosComponent implements OnInit {
   }
 
   private setForm(medicamento: MedicamentoConsulta): void {
-    this.MedicamentoForm.setValue(medicamento);
+    this.MedicamentoForm.setValue({
+      nombre: medicamento.nombre,
+      descripcion: medicamento.descripcion,
+      dosis: medicamento.dosis
+    });
   }
 
   public error(control: AbstractControl, nombre: string): string {
@@ -81,6 +85,14 @@ export class FormMedicamentosComponent implements OnInit {
   private getMedicamento(): MedicamentoUpdate {
     return {
       id: this.receivedData.id,
+      nombre: this.MedicamentoForm.get('nombre')?.value,
+      descripcion: this.MedicamentoForm.get('descripcion')?.value,
+      dosis: this.MedicamentoForm.get('dosis')?.value,
+    }
+  }
+
+  private getMedicamentoPersistencia(): MedicamentoPersistencia {
+    return {
       nombre: this.MedicamentoForm.get('nombre')?.value,
       descripcion: this.MedicamentoForm.get('descripcion')?.value,
       dosis: this.MedicamentoForm.get('dosis')?.value,
