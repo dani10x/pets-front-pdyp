@@ -23,13 +23,16 @@
     "@nebular/eva-icons": "^12.0.0",
     "@nebular/theme": "^12.0.0",
     "@popperjs/core": "^2.11.8",
+    "apollo-angular": "^5.0.2",
     "bootstrap": "^5.3.3",
     "eva-icons": "^1.1.3",
     "jquery": "^3.7.1",
     "pets-front": "file:",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.13.0",
+    "@apollo/client": "^3.0.0",
+    "graphql": "^16"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.14",
