@@ -1,3 +1,4 @@
+import { ClienteConsulta } from "./cliente.model";
 import { ReporteTratamientosDTO } from "./tratameinto.model";
 
 export interface MascotaConsulta {
@@ -37,4 +38,14 @@ export interface ReporteMascotasDTO {
   peso: number;
   fechaNacimiento: Date;
   tratamientos: ReporteTratamientosDTO[];
+}
+
+export interface MascotaEntity {
+  id: number;
+  nombre: string;
+  raza: string;
+  peso: number;
+  fechaNacimiento: Date;
+  idCliente: number;
+  ClienteEntity: ClienteConsulta;
 }

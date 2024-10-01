@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
-import { MascotaConsulta, MascotaConsultaDTO } from 'src/app/features/models/mascota.model';
+import { MascotaConsulta, MascotaConsultaDTO, MascotaEntity } from 'src/app/features/models/mascota.model';
 import { MascotasService } from 'src/app/features/services/mascotas.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { MascotasService } from 'src/app/features/services/mascotas.service';
 export class ListaMascotasComponent implements OnInit, AfterViewInit{
 
   loading: boolean = false;
-  dataSource!: MatTableDataSource<MascotaConsultaDTO>;
+  dataSource!: MatTableDataSource<MascotaEntity>;
   displayedColumns: string[] = ['nombre', 'raza', 'cliente', 'acciones'];
   totalRegistros!: number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -22,7 +22,7 @@ export class ListaMascotasComponent implements OnInit, AfterViewInit{
   constructor(private mascotasService: MascotasService, private toastrService: NbToastrService, private router: Router) {}
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<MascotaConsultaDTO>();
+    this.dataSource = new MatTableDataSource<MascotaEntity>();
     this.consultarMascotas();
   }
 
@@ -31,14 +31,14 @@ export class ListaMascotasComponent implements OnInit, AfterViewInit{
   }
 
   private consultarMascotas(): void {
-    this.mascotasService.listarMascotasPropietario().subscribe({
-      next: (res) => this.dataSource.data = res as MascotaConsultaDTO[],
+    this.mascotasService.graphListarMascotas().subscribe({
+      next: (res) => this.dataSource.data = res as MascotaEntity[],
       error: (e) => console.error(e),
     });
   }
 
   public eliminarMascotas(mascota: MascotaConsulta): void {
-    this.mascotasService.elimianrMascota(mascota.id).subscribe({
+    this.mascotasService.graphElimianrMascota(mascota.id).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Eliminado', { status: 'success' });
       },

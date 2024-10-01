@@ -69,7 +69,7 @@ export class FormMascotasComponent implements OnInit {
     this.loading = true;
     let mascota = this.mascotasForm.value as MascotaPersistencia;
     mascota.fechaNacimiento = this.formatDate(mascota.fechaNacimiento);
-    this.mascotasService.agregarMascota(mascota).subscribe({
+    this.mascotasService.grahpAgregarMascota(mascota).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Registrado', { status: 'success' });
         this.resetForm();
@@ -81,7 +81,7 @@ export class FormMascotasComponent implements OnInit {
 
   private actualizarMascota(): void {
     this.loading = true;
-    this.mascotasService.actualizarMascota(this.obtenerMascota()).subscribe({
+    this.mascotasService.graphActualizarMascota(this.obtenerMascota()).subscribe({
       next: (res) => {
         this.toastrService.show(res.respuesta, 'Actualizado', { status: 'success' });
         this.resetForm();
